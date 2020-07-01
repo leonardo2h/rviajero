@@ -1,11 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 import { InfoCat, HeroCat, InfoText } from './styles';
 
-const Hero = ({ coverData: { desc, cover, showTitle, tags } }) => {
-
-  let flag;
-  showTitle === undefined ? flag = true : flag = showTitle;
+const Hero = ({ coverData: { desc, hcover, tags }, showTitle }) => {
 
   return (
     <>
@@ -15,8 +13,8 @@ const Hero = ({ coverData: { desc, cover, showTitle, tags } }) => {
         </title>
         {tags && <meta name='keywords' content={tags} />}
       </Helmet>
-      <HeroCat cover={cover} showTitle={flag}>
-        <InfoCat>
+      <HeroCat cover={hcover} showTitle={showTitle}>
+        <InfoCat showTitle={showTitle}>
           <InfoText>
             <h1>{desc}</h1>
           </InfoText>
@@ -24,6 +22,13 @@ const Hero = ({ coverData: { desc, cover, showTitle, tags } }) => {
       </HeroCat>
     </>
   );
+};
+
+Hero.propTypes = {
+  showTitle: PropTypes.bool,
+  desc: PropTypes.string,
+  hcover: PropTypes.string,
+  tags: PropTypes.array,
 };
 
 export default Hero;

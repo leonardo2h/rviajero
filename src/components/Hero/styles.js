@@ -6,7 +6,7 @@ export const InfoCat = styled.div`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   height: 300px;
-  background: rgba(0, 0, 0, 0.05);
+  background: ${(props) => (props.showTitle && 'rgba(0, 0, 0, 0.25)')};
   display: flex;
   align-items: flex-end;
   background-position: center;

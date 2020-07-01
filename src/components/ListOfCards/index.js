@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container } from './styles';
 import Card from '../Card';
 
@@ -12,5 +13,11 @@ const ListOfCards = ({ places, loading, error }) => (
       ))}
   </Container>
 );
+
+ListOfCards.propTypes = {
+  places: PropTypes.array,
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+};
 
 export default ListOfCards;

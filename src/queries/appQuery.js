@@ -7,15 +7,14 @@ export const GET_DATA = gql`
             _id
             title
             desc
-            cover
+            hcover
             route
             class
-            showTitle
             countries{
               _id
               title
               desc
-              cover
+              hcover
               flag
               route
               tags
@@ -37,6 +36,7 @@ export const GET_DATA = gql`
               published_date
               route
               cover
+              hcover
               tags
             }
           }

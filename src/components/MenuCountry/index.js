@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MenuPlaces from '../MenuPlaces';
 
 const MenuCountry = ({ countries }) => {
@@ -26,6 +27,10 @@ const MenuCountry = ({ countries }) => {
       }
     </ul>
   );
+};
+
+MenuCountry.propTypes = {
+  countries: PropTypes.array,
 };
 
 export default MenuCountry;

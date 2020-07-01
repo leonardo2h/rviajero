@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MenuCountry from '../MenuCountry';
 import useMenu from '../../hooks/useMenu';
 import './menu.css';
@@ -48,6 +49,10 @@ const Menu = ({ menu = [] }) => {
       </ul>
     </div>
   );
+};
+
+Menu.propTypes = {
+  menu: PropTypes.array,
 };
 
 export default Menu;
