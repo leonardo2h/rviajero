@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -71,6 +73,11 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       runtimeCaching: [
+        // {
+        //   urlPattern: new RegExp(/^https?.*/),
+        //   handler: 'NetworkFirst',
+        //   method: 'GET',
+        // },
         {
           urlPattern: new RegExp('https://res.cloudinary.com'),
           handler: 'CacheFirst',
@@ -90,6 +97,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new CleanWebpackPlugin(['dist'], { root: __dirname }),
+    new CleanWebpackPlugin(),
   ],
+  optimization: {
+    minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()],
+  },
 };
