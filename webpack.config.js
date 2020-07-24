@@ -11,7 +11,7 @@ module.exports = {
   externals: {
     jquery: 'jQuery',
   },
-  entry: './src/index.js',
+  entry: './src/frontend/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -37,10 +37,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          { loader: MiniCssExtractPlugin.loader },
-          'css-loader',
-        ],
+        use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'],
       },
       {
         test: /\.(png|gif|jpg)$/,
@@ -55,18 +52,19 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/statics/icon.png',
+      template: './src/frontend/index.html',
+      favicon: './src/frontend/statics/icon.png',
     }),
     new WebpackPwaManifestPlugin({
       name: 'Registro Viajero - Blog de viajes',
       short_name: 'Registro Viajero',
-      description: 'Guia de viajes donde puedes encontrar lugares para visitar, consejos, tips y toda la información necesaria para organizar un viaje.',
+      description:
+        'Guia de viajes donde puedes encontrar lugares para visitar, consejos, tips y toda la información necesaria para organizar un viaje.',
       background_color: '#fff',
       theme_color: '#07578a',
       icons: [
         {
-          src: path.resolve('src/statics/icon.png'),
+          src: path.resolve('src/frontend/statics/icon.png'),
           sizes: [96, 128, 192, 256, 384, 512],
         },
       ],

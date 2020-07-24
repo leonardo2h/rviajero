@@ -7,7 +7,6 @@ import Loading from '../components/Loading';
 import Menu from '../components/Menu';
 
 const renderProp = ({ loading, error, data }) => {
-
   const { setData, setLoading, setError } = useContext(Context);
   useEffect(() => {
     setData(data);
@@ -20,9 +19,4 @@ const renderProp = ({ loading, error, data }) => {
   return <Menu menu={data.categories} />;
 };
 
-export const MenuWithQuery = () => (
-  <Query query={GET_DATA}>
-    {renderProp}
-  </Query>
-);
-
+export const MenuWithQuery = () => <Query query={GET_DATA}>{renderProp}</Query>;

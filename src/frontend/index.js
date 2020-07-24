@@ -17,5 +17,5 @@ ReactDOM.render(
       <App />
     </ApolloProvider>
   </Context.Provider>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );

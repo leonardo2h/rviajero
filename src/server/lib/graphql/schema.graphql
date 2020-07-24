@@ -1,0 +1,52 @@
+"Tipo places para el menu"
+type Places {
+  _id: ID!
+  title: String
+  published_date: String
+  route: String!
+  desc: String
+  cover: String
+  hcover: String
+  tags: [String]
+}
+
+"Informacion de los paises"
+type Country {
+  _id: ID!
+  title: String
+  desc: String
+  hcover: String
+  flag: String
+  route: String!
+  tags: [String]
+  places: [Places]
+}
+
+"Listado de podcasts para la categorias Poscast"
+type Podcast {
+  _id: ID!
+  title: String
+  desc: String
+  published_date: String
+  route: String
+  cover: String
+  hcover: String
+  tags: [String]
+}
+
+"Datos de la aplicacion para la construccion del menu"
+type Categories {
+  _id: ID!
+  title: String
+  desc: String
+  hcover: String
+  route: String!
+  class: String
+  countries: [Country]
+  podcasts: [Podcast]
+}
+
+type Query {
+  "Devuelve los datos de la aplicacion"
+  categories: [Categories]
+}
