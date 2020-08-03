@@ -7,7 +7,7 @@ import Context from './Context';
 import App from './App';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/api',
+  uri: 'http://localhost:3000/api/data',
 });
 
 ReactDOM.render(

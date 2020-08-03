@@ -1,24 +1,15 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 class Email {
   constructor(oConfig) {
     this.createTransport = nodemailer.createTransport(oConfig);
   }
 
-  enviarcorreo(oEmail, res) {
-    try {
-      this.createTransport.sendMail(oEmail, (error, info) => {
-        if (error) {
-          res.status(500).send(error.message);
-        } else {
-          res.status(200).send('Correo enviado');
-        }
-      });
-      this.createTransport.close();
-    } catch (e) {
-      console.log(e);
-    }
+  async sendMail(oEmail) {
+    const info = await this.createTransport.sendMail(oEmail);
+    this.createTransport.close();
+    return info;
   }
 }
 
-module.exports = Email;
+export default Email;
