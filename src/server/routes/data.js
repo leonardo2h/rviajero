@@ -1,4 +1,4 @@
-import gqlMiddleware from 'express-graphql';
+import { graphqlHTTP } from 'express-graphql';
 import { makeExecutableSchema } from 'graphql-tools';
 import { readFileSync } from 'fs';
 import { join } from 'path';
@@ -20,7 +20,7 @@ function apiData(app, dirname) {
   //Graphql route
   app.use(
     '/api/data',
-    gqlMiddleware({
+    graphqlHTTP({
       schema,
       rootValue: resolvers,
       graphiql: dev,
